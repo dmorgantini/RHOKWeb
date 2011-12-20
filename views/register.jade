@@ -1,0 +1,19 @@
+#main_container
+  include header
+  #main_content
+  h2 It is free to register your charity with us.
+  span
+    | Please complete the form below. Once we have verified that you are a registered charity, and you have a secure payment system, your organisation will be added to our site and you’ll be able to enjoy seamless donations.
+  form
+    fieldset
+      legend Account Information
+      .editor-label
+        label(for="CharityName")Charity Name
+      .editor-field
+        input#CharityName(type="text")
+      .editor-label
+        label(for="CharityRegistrationNumber") Charity Registration Number
+      .editor-field
+        input#CharityRegistrationNumber(type="text")
+  include footer
+  include copyright

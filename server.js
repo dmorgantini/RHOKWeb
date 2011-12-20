@@ -27,9 +27,11 @@ app.configure("production", function() {
 });
 
 var index = require('./routes/index.js');
+var charity = require('./routes/charity.js');
 
 app.get("/", index.index);
 app.get("/index", index.index);
+app.get("/charity/register", charity.register)
 
 var port = process.env.PORT || 3000;
 

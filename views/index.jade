@@ -1,16 +1,6 @@
 #main_container
-  #header
-    #logo
-      img(src="images/ChromeExtensionLogo.png", alt="CharityClickIcon", title="CharityClick icon",  width ="80")
-      h1 Charity
-        span Click
-        sup 1.0
-    #topmenu
-      ul
-        li
-          a(href='/index') Home
-        li
-          a(href='/charity/register') Register your charity
+  include header
+  #main_content
     #spotlite
       h2 See charities to donate to on the hover of your mouse
       h2 How it works
@@ -21,7 +11,6 @@
         img(src="images/flying-heart-icon_16.png")
         | &nbsp;and click "donate now" to be taken straight to the charity's secure donation page
         | or click "view charity information" to find out more about them.
-  #main_content
     #main-block
       h2 How to get started
       p
@@ -37,19 +26,5 @@
       h2 See example below
       img(src="images/Example2.png")
       div(style="clear:both")
-  #footer
-    #footer-left
-      a(href="#logo")
-        img(src="images/flying-heart-icon_48.png", alt="", title="")
-  #footer-copyright
-    p Copyright 2011 CharityClick.net. All Rights Reserved.
-    p
-      | This site is:
-      a(href="http://validator.w3.org/check?uri=referer") XHTML
-      | &nbsp; and
-      a(href="http://jigsaw.w3.org/css-validator/check/referer") CSS
-      |  &nbsp; valid
-    p
-      span Theme
-      | 1.0 by:
-      a(href="http://fromhell.eu/") Martin "duno" Polacik
+  include footer
+  include copyright
