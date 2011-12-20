@@ -1,3 +1,8 @@
+/*
+ * Developer : David Morgantini
+ * All code (c)2011 CharityClick.net all rights reserved
+ */
+
 var app, express;
 express = require("express");
 app = module.exports = express.createServer();
