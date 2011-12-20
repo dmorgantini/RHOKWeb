@@ -12,7 +12,7 @@
   "should":"*",
   "zombie":"*",
   "mocha":"*"
-}, "engine":"node ~> 0.4.x", "scripts":{
+}, "engine":"node ~> 0.6.x", "scripts":{
   "test":"make test"
 }
 }
