@@ -1,6 +1,5 @@
 /*
- * Developer : David Morgantini
- * All code (c)2011 CharityClick.net all rights reserved
+ * All code (c) 2011 CharityClick.net all rights reserved
  */
 
 var app, express;
@@ -27,9 +26,10 @@ app.configure("production", function() {
   return app.use(express.errorHandler());
 });
 
-app.get("/", function(req, resp) {
-  return resp.render('index');
-});
+var index = require('./routes/index.js');
+
+app.get("/", index.index);
+app.get("/index", index.index);
 
 var port = process.env.PORT || 3000;
 
