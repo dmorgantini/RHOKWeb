@@ -9,13 +9,10 @@ exports.jsonList = function (req, res) {
         if (!err)
         {
             var json = [];
-            
             docs.forEach(function(elem){
                 json.push({ "id": elem._id, "name": elem.name, "donationInstructions": elem.donationInstructions})
             });
-
             return res.send(json);
-
         }
         else
         {
