@@ -14,7 +14,9 @@ var CharitySchema = new Schema({
     name:String,
     website: String,
     directDonationLink: String,
-    donationInstructions: String
+    donationInstructions: String,
+    status: { type: String, "default": "pending"}
 });
 
-exports.Charity = Mongoose.model('Charity', CharitySchema);
+exports.CharitySchema = CharitySchema;
+exports.Mongoose = Mongoose;

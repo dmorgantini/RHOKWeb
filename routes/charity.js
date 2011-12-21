@@ -16,8 +16,11 @@ exports.newCharity = function (req, res) {
 exports.view = function (req, res) {
     charityModel.Charity.findById(req.params.id, function(err, doc) {
         if (!err)
+        {
+            console.log(doc);
             return res.render('pages/viewCharity', doc);
+        }
         else
-            return res.render('pages/viewCharity', { 'charity.name': "Crash & Burn" });
+            return res.render('pages/viewCharity', { 'name': "Crash & Burn" });
     });
 };

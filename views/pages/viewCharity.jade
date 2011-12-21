@@ -1,7 +1,29 @@
 #main_container
   include ../header
   #main_content
-    h2 Yay Charity #{name}
+    h2 Registered Charity: #{name}
 
+    - if status == 'pending'
+      span This charity is pending administrative acceptance.
+    fieldset
+      legend Charity Information
+      .editor-label
+        label(for="CharityName") Charity Name
+      .editor-field
+        #CharityName #{name}
+      .editor-label
+        label(for="CharityWebsite") Charity Website
+      .editor-field
+        #CharityWebsite
+          a(href="#{website}") #{website}
+      .editor-label
+        label(for="DirectDonateLink") Direct Donate Link
+      .editor-field
+        #DirectDonateLink
+          a(href="#{directDonationLink}") #{directDonationLink}
+      .editor-label
+        label(for="DonationInstructions") Phone/SMS Donation Instructions
+      .editor-field
+        #DonationInstructions #{donationInstructions}
   include ../footer
   include ../copyright
