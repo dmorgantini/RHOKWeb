@@ -7,14 +7,18 @@ exports.register = function (req, res) {
 
 exports.newCharity = function (req, res) {
     var charity = new charityModel.Charity(req.body.charity);
-    charity.save(function (err){
+    charity.save(function (err) {
         console.log(err);
     });
     return res.redirect('/charity/' + charity._id);
 };
 
 exports.view = function (req, res) {
-    return res.render('pages/viewCharity', { 'name': 'Crash & Burn', 'website': 'WebSite', 'directDonationLink':'direct link', 'donationInstructions': 'donation'});
+    return res.render('pages/viewCharity', { 'name':'Crash & Burn',
+        'website':'WebSite',
+        'directDonationLink':'direct link',
+        'donationInstructions':'donation',
+        'status':'pending'});
 
 //    charityModel.Charity.findById(req.params.id, function(err, doc) {
 //        if (!err)
