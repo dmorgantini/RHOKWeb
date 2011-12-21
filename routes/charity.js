@@ -14,7 +14,7 @@ exports.newCharity = function (req, res) {
 };
 
 exports.view = function (req, res) {
-    return res.render('pages/register');
+    return res.render('pages/viewCharity', { 'name': 'Crash & Burn', 'website': 'WebSite', 'directDonationLink':'direct link', 'donationInstructions': 'donation'});
 
 //    charityModel.Charity.findById(req.params.id, function(err, doc) {
 //        if (!err)
