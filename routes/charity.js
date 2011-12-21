@@ -21,6 +21,9 @@ exports.view = function (req, res) {
             return res.render('pages/viewCharity', doc);
         }
         else
+        {
+            console.log(err);
             return res.render('pages/viewCharity', { 'name': "Crash & Burn" });
+        }
     });
 };
