@@ -18,7 +18,7 @@ exports.view = function (req, res) {
         'website':'WebSite',
         'directDonationLink':'direct link',
         'donationInstructions':'donation',
-        'status':'pending'});
+        'charityState':'pending'});
 
 //    charityModel.Charity.findById(req.params.id, function(err, doc) {
 //        if (!err)
