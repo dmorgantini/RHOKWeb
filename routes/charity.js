@@ -14,22 +14,16 @@ exports.newCharity = function (req, res) {
 };
 
 exports.view = function (req, res) {
-    return res.render('pages/viewCharity', { 'name':'Crash & Burn',
-        'website':'WebSite',
-        'directDonationLink':'direct link',
-        'donationInstructions':'donation',
-        'charityState':'pending'});
-
-//    charityModel.Charity.findById(req.params.id, function(err, doc) {
-//        if (!err)
-//        {
-//            console.log(doc);
-//            return res.render('pages/viewCharity', doc);
-//        }
-//        else
-//        {
-//            console.log(err);
-//            return res.render('pages/viewCharity', { 'name': "Crash & Burn" });
-//        }
-//    });
+    charityModel.Charity.findById(req.params.id, function(err, doc) {
+        if (!err)
+        {
+            console.log(doc);
+            return res.render('pages/viewCharity', doc);
+        }
+        else
+        {
+            console.log(err);
+            return res.render('error'); // TODO: need to set up an error page
+        }
+    });
 };

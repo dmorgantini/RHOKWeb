@@ -15,7 +15,7 @@ var CharitySchema = new Schema({
     website: String,
     directDonationLink: String,
     donationInstructions: String,
-    status: { type: String, "default": "pending"}
+    charityState: { type: String, "default": "pending"}
 });
 
 exports.CharitySchema = CharitySchema;
