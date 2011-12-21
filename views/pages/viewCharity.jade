@@ -3,8 +3,9 @@
   #main_content
     h2 Registered Charity: #{name}
 
-//    - if (status == 'pending')
-    span This charity is pending administrative acceptance.
+    - if (status == 'pending')
+      span This charity is pending administrative acceptance.
+    
     fieldset
       legend Charity Information
       .editor-label
