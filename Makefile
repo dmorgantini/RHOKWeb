@@ -8,6 +8,7 @@ test:
 		--reporter $(REPORTER) \
 		--slow 20 \
 		--growl \
+		--globals name \
 		$(TESTS)
 
 

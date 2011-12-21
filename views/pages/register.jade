@@ -1,5 +1,5 @@
 #main_container
-  include header
+  include ../header
   #main_content
   h2 It is free to register your charity with us.
   span
@@ -10,21 +10,21 @@
       .editor-label
         label(for="CharityName") Charity Name
       .editor-field
-        input#CharityName(type="text")
+        input#CharityName(type="text", name="charity[name]")
       .editor-label
         label(for="CharityWebsite") Charity Website
       .editor-field
-        input#CharityWebsite(type="text")
+        input#CharityWebsite(type="text", name="charity[website]")
       .editor-label
         label(for="DirectDonateLink") Direct Donate Link
       .editor-field
-        input#DirectDonateLink(type="text")
+        input#DirectDonateLink(type="text", name="charity[directDonationLink]")
       .editor-label
         label(for="DonationInstructions") Phone/SMS Donation Instructions
       .editor-field
-        input#DonationInstructions(type="text")
+        input#DonationInstructions(type="text", name="charity[donationInstructions]")
       .form-controls
         input#resetForm(type="button", value="Reset")
         input#submit(type="submit", value="Register")
-  include footer
-  include copyright
+  include ../footer
+  include ../copyright

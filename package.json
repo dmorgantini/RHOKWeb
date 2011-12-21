@@ -6,8 +6,8 @@
   "connect-assets":"*",
   "stylus":"*",
   "nib":"*",
-  "markdown":"*"
-
+  "markdown":"*",
+  "mongoose":"*"
 }, "devDependencies":{
   "should":"*",
   "zombie":"*",

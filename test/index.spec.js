@@ -11,7 +11,7 @@ describe("Given I am user", function () {
     });
 
     describe("When I visit the home page", function () {
-        it('should return 200 OK', function () {
+        it('should return 200 OK', function (done) {
             zombie.visit("http://localhost:3000", function (e, browser, status) {
                 status.should.equal(200);
                 done();
@@ -20,12 +20,14 @@ describe("Given I am user", function () {
     });
 
     describe("When I visit the home page via index", function () {
-        it('should return 200 OK', function () {
+        it('should return 200 OK', function (done) {
             zombie.visit("http://localhost:3000/index", function (e, browser, status) {
                 status.should.equal(200);
                 done();
             });
         });
     });
+
+
 });
 
