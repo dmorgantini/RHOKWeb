@@ -28,12 +28,15 @@ app.configure("production", function () {
 
 var index = require('./routes/index.js');
 var charity = require('./routes/charity.js');
+var charities = require('./routes/charities.js');
 
 app.get("/", index.index);
 app.get("/index", index.index);
 app.get("/charity/register", charity.register);
 app.get("/charity/:id", charity.view);
 app.post("/charity/register", charity.newCharity);
+
+app.get("/charities.json", charities.jsonList);
 
 var port = process.env.PORT || 3000;
 

@@ -1,4 +1,4 @@
-charityModel = require('../model/Charity.js');
+var charityModel = require('../model/Charity.js');
 
 
 exports.register = function (req, res) {
@@ -17,7 +17,6 @@ exports.view = function (req, res) {
     charityModel.Charity.findById(req.params.id, function(err, doc) {
         if (!err)
         {
-            console.log(doc);
             return res.render('pages/viewCharity', doc);
         }
         else
