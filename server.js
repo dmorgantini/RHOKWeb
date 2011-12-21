@@ -32,8 +32,11 @@ var charities = require('./routes/charities.js');
 
 app.get("/", index.index);
 app.get("/index", index.index);
+
 app.get("/charity/register", charity.register);
 app.get("/charity/:id", charity.view);
+app.get("/charity/:id/donate", charity.donate);
+app.get("/charity/:id/information", charity.information);
 app.post("/charity/register", charity.newCharity);
 
 app.get("/charities.json", charities.jsonList);

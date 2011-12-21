@@ -14,13 +14,35 @@ exports.newCharity = function (req, res) {
 };
 
 exports.view = function (req, res) {
-    charityModel.Charity.findById(req.params.id, function(err, doc) {
-        if (!err)
-        {
+    charityModel.Charity.findById(req.params.id, function (err, doc) {
+        if (!err) {
             return res.render('pages/viewCharity', doc);
         }
-        else
-        {
+        else {
+            console.log(err);
+            return res.render('error'); // TODO: need to set up an error page
+        }
+    });
+};
+
+exports.donate = function (req, res) {
+    charityModel.Charity.findById(req.params.id, function (err, doc) {
+        if (!err) {
+            return res.redirect(doc.directDonationLink);
+        }
+        else {
+            console.log(err);
+            return res.render('error'); // TODO: need to set up an error page
+        }
+    });
+};
+
+exports.information = function (req, res) {
+    charityModel.Charity.findById(req.params.id, function (err, doc) {
+        if (!err) {
+            return res.redirect(doc.website);
+        }
+        else {
             console.log(err);
             return res.render('error'); // TODO: need to set up an error page
         }
