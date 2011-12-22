@@ -6,9 +6,6 @@ var zombie = require("zombie");
 var assert = require("assert");
 
 describe("Given I am user", function () {
-    beforeEach(function () {
-        this.server = require('../server.js');
-    });
 
     describe("When I visit the home page", function () {
         it('should return 200 OK', function (done) {
