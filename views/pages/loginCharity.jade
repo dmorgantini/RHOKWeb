@@ -1,0 +1,21 @@
+#main_container
+  include ../header
+  #main_content
+    h2 Charity Login
+    - if (error == true)
+      span#error Invalid user name or password, please try again
+
+    form(action="/charity/login", method="post")
+      .editor-label
+        label(for="username") Username/e-mail
+      .editor-field
+        input#username(type="text", name="username")
+      .editor-label
+        label(for="password") Password
+      .editor-field
+        input#password(type="password", name="password")
+      .form-controls
+        input#submit(type="submit", value="Login")
+        a#forgotPassword(href='/forgotPassword') Forgot Password?
+  include ../footer
+  include ../copyright

@@ -1,0 +1,43 @@
+#main_container
+  include ../header
+  #main_content
+    h2 It is free to register your charity with us.
+    span
+      | Please complete the form below. Once we have verified that you are a registered charity, and you have a secure payment system, your organisation will be added to our site and you’ll be able to enjoy seamless donations.
+
+    form(action="/charity/register", method="post")
+      fieldset
+        legend Charity Information
+        .editor-label
+          label(for="CharityName") Charity Name
+        .editor-field
+          input#CharityName(type="text", name="charity[name]")
+        .editor-label
+          label(for="CharityWebsite") Charity Website
+        .editor-field
+          input#CharityWebsite(type="text", name="charity[website]")
+        .editor-label
+          label(for="DirectDonateLink") Direct Donate Link
+        .editor-field
+          input#DirectDonateLink(type="text", name="charity[directDonationLink]")
+        .editor-label
+          label(for="DonationInstructions") Phone/SMS Donation Instructions
+        .editor-field
+          input#DonationInstructions(type="text", name="charity[donationInstructions]")
+        .editor-label
+          label(for="email") E-Mail Address
+        .editor-field
+          input#email(type="text", name="charity[emailAddress]")
+        .editor-label
+          label(for="password") Password
+        .editor-field
+          input#password(type="password", name="charity[password]")
+        .editor-label
+          label(for="confirmPassword") Confirm Password
+        .editor-field
+          input#password(type="password", name="charity[confirmPassword]")
+        .form-controls
+          input#resetForm(type="button", value="Reset")
+          input#submit(type="submit", value="Register")
+  include ../footer
+  include ../copyright
