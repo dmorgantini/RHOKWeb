@@ -1,25 +1,44 @@
 var charityModel = require('../model/Charity.js');
-
+var charitySessionModel = require('../model/CharitySession.js');
 
 exports.register = function (req, res) {
     return res.render('pages/registerCharity');
 };
 
-exports.loginView = function(req, res) {
-    return res.render('pages/loginCharity', {'error' : false}); // There may be a better way so that I don't need to pass in false
+exports.loginView = function (req, res) {
+    if (req.cookies && req.cookies.session !== null) {
+        charitySessionModel.CharitySession.findById(req.cookies.session.charity, function (err, doc) {
+            if (err) {
+                console.log(err);
+                return res.redirect('/error');
+            }
+
+            if (doc.length == 0) {
+                return res.render('pages/loginCharity');
+            }
+
+            return res.redirect('/charity/' + doc.charityId + '/update');
+        });
+
+    }
+    else {
+        return res.render('pages/loginCharity');
+    }
 };
 
-exports.login = function(req, res) {
-    charityModel.Charity.find({ 'username': req.body.username, 'password': req.body.password }, function(err, doc){
+exports.login = function (req, res) {
+    charityModel.Charity.find({ 'emailAddress':req.body.username, 'password':req.body.password }, function (err, doc) {
 
-        if (err)
-            return res.render('error');
-
-        if (doc.length == 0){
-            return res.render('pages/loginCharity', {'error': true});
+        if (err) {
+            console.log(err);
+            return res.redirect('/error');
         }
 
-        return res.render('pages/viewCharity', doc);
+        if (doc.length == 0) {
+            return res.redirect('pages/loginCharity/error');
+        }
+
+        return res.render('pages/viewCharity', doc[0]);
 
     });
 };
@@ -39,7 +58,7 @@ exports.view = function (req, res) {
         }
         else {
             console.log(err);
-            return res.render('error'); // TODO: need to set up an error page
+            return res.redirect('/error'); // TODO: need to set up an error page
         }
     });
 };
@@ -51,7 +70,7 @@ exports.donate = function (req, res) {
         }
         else {
             console.log(err);
-            return res.render('error'); // TODO: need to set up an error page
+            return res.redirect('/error'); // TODO: need to set up an error page
         }
     });
 };
@@ -63,7 +82,7 @@ exports.information = function (req, res) {
         }
         else {
             console.log(err);
-            return res.render('error'); // TODO: need to set up an error page
+            return res.redirect('/error'); // TODO: need to set up an error page
         }
     });
 };

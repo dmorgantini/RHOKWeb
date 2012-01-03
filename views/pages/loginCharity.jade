@@ -2,8 +2,6 @@
   include ../header
   #main_content
     h2 Charity Login
-    - if (error == true)
-      span#error Invalid user name or password, please try again
 
     form(action="/charity/login", method="post")
       .editor-label

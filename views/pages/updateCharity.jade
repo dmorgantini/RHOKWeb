@@ -1,0 +1,43 @@
+#main_container
+  include ../header
+  #main_content
+    h2 Welcome back!
+    span
+      | Please amend the form below.  Changes will be validated by administration before appearing live.
+
+    form(action="/charity/update", method="post")
+      fieldset
+        legend Charity Information
+        input#id(type="hidden", value='#{charity._id}')
+        .editor-label
+          label(for="CharityName") Charity Name
+        .editor-field
+          input#CharityName(type="text", name="charity[name]", value='#{charity.name}')
+        .editor-label
+          label(for="CharityWebsite") Charity Website
+        .editor-field
+          input#CharityWebsite(type="text", name="charity[website]", value='#{charity.website}')
+        .editor-label
+          label(for="DirectDonateLink") Direct Donate Link
+        .editor-field
+          input#DirectDonateLink(type="text", name="charity[directDonationLink]", value='#{charity.directDonationLink}')
+        .editor-label
+          label(for="DonationInstructions") Phone/SMS Donation Instructions
+        .editor-field
+          input#DonationInstructions(type="text", name="charity[donationInstructions]", value='#{charity.donationInstructions}')
+        .editor-label
+          label(for="email") E-Mail Address
+        .editor-field
+          input#email(type="text", name="charity[emailAddress]", value='#{charity.emailAddress}')
+        .editor-label
+          label(for="password") Password
+        .editor-field
+          input#password(type="password", name="charity[password]")
+        .editor-label
+          label(for="confirmPassword") Confirm Password
+        .editor-field
+          input#password(type="password", name="charity[confirmPassword]")
+        .form-controls
+          input#submit(type="submit", value="Update")
+  include ../footer
+  include ../copyright

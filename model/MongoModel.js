@@ -12,11 +12,17 @@ var Schema = Mongoose.Schema, ObjectId = Schema.ObjectId;
 var CharitySchema = new Schema({
     id:ObjectId,
     name:String,
-    website: String,
-    directDonationLink: String,
-    donationInstructions: String,
-    charityState: { type: String, "default": "pending"}
+    website:String,
+    directDonationLink:String,
+    donationInstructions:String,
+    charityState:{ type:String, "default":"pending"}
+});
+
+var CharitySessionSchema = new Schema({
+    id:ObjectId,
+    charityId: String
 });
 
 exports.CharitySchema = CharitySchema;
+exports.CharitySessionSchema = CharitySessionSchema;
 exports.Mongoose = Mongoose;
