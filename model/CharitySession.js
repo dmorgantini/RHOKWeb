@@ -7,4 +7,4 @@ var CharitySessionSchema = mongoModel.CharitySessionSchema;
 var Mongoose = mongoModel.Mongoose;
 
 
-exports.Charity = Mongoose.model('CharitySessionSchema', CharitySessionSchema);
+exports.CharitySession = Mongoose.model('CharitySession', CharitySessionSchema);

@@ -15,13 +15,15 @@ var CharitySchema = new Schema({
     website:String,
     directDonationLink:String,
     donationInstructions:String,
+    email:String,
+    password:String,
     charityState:{ type:String, "default":"pending"}
-});
+}, { strict: true } );
 
 var CharitySessionSchema = new Schema({
     id:ObjectId,
-    charityId: String
-});
+    charity: String
+}, { strict: true });
 
 exports.CharitySchema = CharitySchema;
 exports.CharitySessionSchema = CharitySessionSchema;

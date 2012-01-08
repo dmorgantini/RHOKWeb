@@ -11,6 +11,7 @@ app.configure(function () {
     app.set("view engine", "jade");
     app.use(express.bodyParser());
     app.use(express.methodOverride());
+    app.use(express.cookieParser('session'));
     app.use(app.router);
     return app.use(express.static(__dirname + "/public"));
 });
@@ -27,7 +28,7 @@ app.configure("production", function () {
 });
 
 var index = require('./routes/index.js');
-var charity = require('./routes/charity.js');
+var charity = require('./routes/charity.js').Charity();
 var charities = require('./routes/charities.js');
 
 app.get("/", index.index);
@@ -38,6 +39,8 @@ app.get("/charity/login", charity.loginView);
 app.get("/charity/:id", charity.view);
 app.get("/charity/:id/donate", charity.donate);
 app.get("/charity/:id/information", charity.information);
+app.get("/charity/:id/update", charity.updateView);
+app.post("/charity/:id/update", charity.update);
 app.post("/charity/register", charity.newCharity);
 app.post("/charity/login", charity.login);
 

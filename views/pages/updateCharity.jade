@@ -5,10 +5,9 @@
     span
       | Please amend the form below.  Changes will be validated by administration before appearing live.
 
-    form(action="/charity/update", method="post")
+    form(action="/charity/#{charity._id}/update", method="post")
       fieldset
         legend Charity Information
-        input#id(type="hidden", value='#{charity._id}')
         .editor-label
           label(for="CharityName") Charity Name
         .editor-field
@@ -28,7 +27,7 @@
         .editor-label
           label(for="email") E-Mail Address
         .editor-field
-          input#email(type="text", name="charity[emailAddress]", value='#{charity.emailAddress}')
+          input#email(type="text", name="charity[email]", value='#{charity.email}')
         .editor-label
           label(for="password") Password
         .editor-field

@@ -1,88 +1,122 @@
-var charityModel = require('../model/Charity.js');
-var charitySessionModel = require('../model/CharitySession.js');
+exports.Charity = function (charityModel, charitySessionModel) {
+    var charityModel = charityModel || require('../model/Charity.js');
+    var charitySessionModel = charitySessionModel || require('../model/CharitySession.js');
 
-exports.register = function (req, res) {
-    return res.render('pages/registerCharity');
-};
+    return {
+        register:function (req, res) {
+            return res.render('pages/registerCharity');
+        },
 
-exports.loginView = function (req, res) {
-    if (req.cookies && req.cookies.session !== null) {
-        charitySessionModel.CharitySession.findById(req.cookies.session.charity, function (err, doc) {
-            if (err) {
-                console.log(err);
-                return res.redirect('/error');
+        loginView:function (req, res) {
+            if (req.cookies && req.cookies.session !== null) {
+                charitySessionModel.CharitySession.findById(req.cookies.session, function (err, doc) {
+                    if (err) {
+                        console.log(err);
+                        return res.redirect('/error');
+                    }
+
+                    if (!doc) {
+                        return res.render('pages/loginCharity');
+                    }
+
+                    return res.redirect('/charity/' + doc.charity + '/update');
+                });
+
             }
-
-            if (doc.length == 0) {
+            else {
                 return res.render('pages/loginCharity');
             }
+        },
 
-            return res.redirect('/charity/' + doc.charityId + '/update');
-        });
+        login:function (req, res) {
+            charityModel.Charity.find({ 'email':req.body.username, 'password':req.body.password }, function (err, doc) {
 
-    }
-    else {
-        return res.render('pages/loginCharity');
-    }
-};
+                if (err) {
+                    console.log(err);
+                    return res.redirect('/error');
+                }
 
-exports.login = function (req, res) {
-    charityModel.Charity.find({ 'emailAddress':req.body.username, 'password':req.body.password }, function (err, doc) {
+                if (doc.length == 0) {
+                    return res.redirect('/loginCharity/error');
+                }
 
-        if (err) {
-            console.log(err);
-            return res.redirect('/error');
+                var session = new charitySessionModel.CharitySession({ 'charity': doc[0]._id });
+                session.save(function(err, obj) {
+                    res.cookie('session', obj._id);
+                    return res.redirect('/charity/' + doc[0]._id + '/update');
+                });
+
+
+            });
+        },
+
+        newCharity:function (req, res) {
+            var charity = new charityModel.Charity(req.body.charity);
+            charity.save(function (err) {
+                console.log(err);  // TODO: handle error better
+                if (err){
+                    return res.render('pages/registerCharity/error')
+                }
+
+                return res.redirect('/charity/' + charity._id);
+            });
+        },
+
+        view:function (req, res) {
+            charityModel.Charity.findById(req.params.id, function (err, doc) {
+                if (!err) {
+                    return res.render('pages/viewCharity', doc);
+                }
+                else {
+                    console.log(err);
+                    return res.redirect('/error'); // TODO: need to set up an error page
+                }
+            });
+        },
+
+        donate:function (req, res) {
+            charityModel.Charity.findById(req.params.id, function (err, doc) {
+                if (!err) {
+                    return res.redirect(doc.directDonationLink);
+                }
+                else {
+                    console.log(err);
+                    return res.redirect('/error'); // TODO: need to set up an error page
+                }
+            });
+        },
+
+        information:function (req, res) {
+            charityModel.Charity.findById(req.params.id, function (err, doc) {
+                if (!err) {
+                    return res.redirect(doc.website);
+                }
+                else {
+                    console.log(err);
+                    return res.redirect('/error'); // TODO: need to set up an error page
+                }
+            });
+        },
+
+        update:function (req, res) {
+            // TODO: security (validate session cookie)
+            charityModel.Charity.update({_id: req.params.id }, req.body.charity, function (err) {
+                console.log(err);  // TODO: handle error better
+                return res.redirect('/charity/' + req.params.id);
+            });
+        },
+
+        updateView: function (req, res) {
+            charityModel.Charity.findById(req.params.id, function (err, doc) {
+                if (!err) {
+                    return res.render('pages/updateCharity', { 'charity': doc });
+                }
+                else {
+                    console.log('Update View ' + err);
+                    return res.redirect('/error'); // TODO: need to set up an error page
+                }
+            });
         }
 
-        if (doc.length == 0) {
-            return res.redirect('pages/loginCharity/error');
-        }
-
-        return res.render('pages/viewCharity', doc[0]);
-
-    });
-};
-
-exports.newCharity = function (req, res) {
-    var charity = new charityModel.Charity(req.body.charity);
-    charity.save(function (err) {
-        console.log(err);  // TODO: handle error better
-    });
-    return res.redirect('/charity/' + charity._id);
-};
-
-exports.view = function (req, res) {
-    charityModel.Charity.findById(req.params.id, function (err, doc) {
-        if (!err) {
-            return res.render('pages/viewCharity', doc);
-        }
-        else {
-            console.log(err);
-            return res.redirect('/error'); // TODO: need to set up an error page
-        }
-    });
-};
-
-exports.donate = function (req, res) {
-    charityModel.Charity.findById(req.params.id, function (err, doc) {
-        if (!err) {
-            return res.redirect(doc.directDonationLink);
-        }
-        else {
-            console.log(err);
-            return res.redirect('/error'); // TODO: need to set up an error page
-        }
-    });
-};
-
-exports.information = function (req, res) {
-    charityModel.Charity.findById(req.params.id, function (err, doc) {
-        if (!err) {
-            return res.redirect(doc.website);
-        }
-        else {
-            console.log(err);
-            return res.redirect('/error'); // TODO: need to set up an error page
-        }
-    });
+    };
 };
