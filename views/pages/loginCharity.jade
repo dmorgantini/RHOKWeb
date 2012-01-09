@@ -3,9 +3,12 @@
   #main_content
     h2 Charity Login
 
+    - if (error == 'true')
+      span Email address or password is invalid please try again
+
     form(action="/charity/login", method="post")
       .editor-label
-        label(for="username") Username/e-mail
+        label(for="username") Email
       .editor-field
         input#username(type="text", name="username")
       .editor-label

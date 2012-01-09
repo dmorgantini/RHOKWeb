@@ -8,6 +8,8 @@
     form(action="/charity/#{charity._id}/update", method="post")
       fieldset
         legend Charity Information
+        - if (error == 'true')
+          span.error There was an error in your form, please try again
         .editor-label
           label(for="CharityName") Charity Name
         .editor-field

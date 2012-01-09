@@ -17,5 +17,4 @@ CharitySchema.pre('save', function (next) {
     }
 });
 
-
 exports.Charity = Mongoose.model('Charity', CharitySchema);
