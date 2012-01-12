@@ -1,4 +1,4 @@
-exports.Charity = function (charityModel, charitySessionModel) {
+module.exports = function (charityModel, charitySessionModel) {
     var charityModel = charityModel || require('../model/Charity.js');
     var charitySessionModel = charitySessionModel || require('../model/CharitySession.js');
 

@@ -28,7 +28,7 @@ app.configure("production", function () {
 });
 
 var index = require('./routes/index.js');
-var charity = require('./routes/charity.js').Charity();
+var charity = require('./routes/charity.js')();
 var charities = require('./routes/charities.js');
 
 app.get("/", index.index);

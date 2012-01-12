@@ -5,7 +5,7 @@ var charityModel = require('../model/Charity.js');
 
 
 exports.jsonList = function (req, res) {
-    charityModel.Charity.find({'charityState': "pending"}, function(err, docs){ // TODO: change this to "approved" when approval functionality completed
+    charityModel.Charity.find({'charityState': "accepted"}, function(err, docs){ // TODO: change this to "approved" when approval functionality completed
         if (!err)
         {
             var json = [];
