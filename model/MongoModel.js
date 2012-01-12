@@ -17,6 +17,7 @@ var CharitySchema = new Schema({
     donationInstructions:String,
     email:String,
     password:String,
+    confirmPassword:String,
     charityState:{ type:String, "default":"pending"}
 }, { strict: true } );
 
