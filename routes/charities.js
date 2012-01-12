@@ -9,11 +9,19 @@ exports.jsonList = function (req, res) {
         if (!err) {
             var json = [];
             docs.forEach(function (elem) {
+                var matches = (/^[^#]*?:\/\/(.*?)(\/.*)?$/).exec(elem.website);
+                var baseURI;
+                if (!matches){
+                    baseURI = "";
+                } else {
+                    baseURI = matches[1];
+                }
+
                 json.push({
                     "id":elem._id,
                     "name":elem.name,
                     "donationInstructions":elem.donationInstructions,
-                    "baseURI": (/^[^#]*?:\/\/(.*?)(\/.*)?$/).exec(elem.website)[1]
+                    "baseURI": baseURI
                 });
             });
             return res.send(json);
