@@ -111,8 +111,8 @@ module.exports = function (charityModel, charitySessionModel) {
             charityModel.Charity.findById(req.params.id, function (err, doc) {
                 if (!err) {
                     doc.name = req.body.charity.name;
-                    doc.website = req.body.charity.name;
-                    doc.directDonationLink = req.body.charity.name;
+                    doc.website = req.body.charity.website;
+                    doc.directDonationLink = req.body.charity.directDonationLink;
                     doc.donationInstructions = req.body.charity.donationInstructions;
                     doc.email = req.body.charity.email;
                     if (!req.body.charity.password) {
