@@ -1,6 +1,6 @@
 #main_container
-  include ../header
-  #main_content
+  include ../newHeader
+  #main_content.body
     h2 Charity Login
 
     - if (error == 'true')
@@ -18,5 +18,3 @@
       .form-controls
         input#submit(type="submit", value="Login")
         a#forgotPassword(href='/forgotPassword') Forgot Password?
-  include ../footer
-  include ../copyright

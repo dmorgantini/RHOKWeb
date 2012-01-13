@@ -1,6 +1,6 @@
 #main_container
-  include ../header
-  #main_content
+  include ../newHeader
+  #main_content.body
     h2 Registered Charity: #{name}
 
     - if (charityState == 'pending')
@@ -26,5 +26,3 @@
         label(for="DonationInstructions") Phone/SMS Donation Instructions
       .editor-field
         #DonationInstructions #{donationInstructions}
-  include ../footer
-  include ../copyright
