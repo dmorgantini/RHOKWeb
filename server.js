@@ -33,6 +33,8 @@ var charities = require('./routes/charities.js');
 
 app.get("/", index.index);
 app.get("/index", index.index);
+app.get("/aboutus", index.aboutus);
+app.get("/contact", index.contact);
 
 app.get("/charity/register", charity.register);
 app.get(/^\/charity\/login(\/error)?$/, charity.loginView);

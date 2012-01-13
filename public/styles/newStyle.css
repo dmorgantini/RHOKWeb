@@ -1,0 +1,170 @@
+body {
+    margin: 0px;
+    padding: 15px;
+    font: 100%/1.0 "Verdana", "Geneva CE", lucida, sans-serif;
+    color: #3b3b3b
+}
+
+a, a:hover{
+    color: inherit;
+    text-decoration: none;
+}
+
+p {
+    line-height: 1.15em;
+}
+
+div.body {
+    width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#newHeader {
+    height: 190px;
+    background: url('../images/header.png');
+    color: #4dbce9;
+    border-bottom: 1px solid #e6e6e6;
+}
+
+#newHeader h1 {
+    padding-left: 150px;
+    padding-top: 85px;
+    font-weight: bolder;
+    font: 3.0em "arial black", sans-serif;
+    margin-bottom: 0;
+}
+
+#newHeader sup {
+    font-size: 0.5em;
+    margin-left: 5px;
+}
+
+#newHeader h2 {
+    font: 0.9em "arial", sans-serif;
+    font-weight: bold;
+    display: inline;
+    padding-left: 250px;
+}
+
+#newHeader div.links {
+    display: inline;
+    float: right;
+    margin-top: 10px;
+}
+
+#newHeader div.links a, #newHeader div.links a:hover {
+    color: #7a7a7a;
+    text-decoration: none;
+    margin-left: 40px;
+    margin-right: 5px;
+
+}
+
+#main_content {
+    height: 610px;
+    margin-top:20px;
+}
+
+#main_content div#video {
+    display: inline;
+    float: left;
+    width: 470px;
+    height: 240px;
+    padding: 20px;
+    font-size: 1.1em;
+    background-color: #4d4d4d;
+    color: white;
+}
+
+#main_content div#tryitout {
+    display: inline;
+    float: right;
+    width: 310px;
+    height: 280px;
+}
+
+#main_content div#tryitout div {
+    background-color: #4dbce9;
+    color: white;
+    padding-bottom: 0.1em;
+}
+
+#main_content div#tryitout div p {
+    padding-left: 20px;
+    padding-right: 30px;
+    line-height: 1.15em;
+}
+
+#main_content h2 {
+    border-bottom: 1px solid #e6e6e6;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 5px;
+    margin-top: 0;
+    padding-top: 20px;
+}
+
+#main_content div#tryitout a img {
+    padding-top:10px;
+}
+
+#main_content div#description {
+    display: inline;
+    float: left;
+    width: 520px;
+    height: 240px;
+    padding: 20px 10px 20px 0px;
+    font-size: 1.1em;
+}
+
+
+#main_content div#description h2, #main_content div#charity-list h2  {
+    margin-left: 0px;
+}
+
+#main_content div#charity-list {
+    display: inline;
+    float: right;
+    width: 310px;
+    height: 280px;
+    padding-top: 20px;
+}
+
+
+#main_content div#charity-list a, #main_content div#charity-list a:hover {
+    color: #7a7a7a;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+#signup.body {
+    background-color: #e3e3e3;
+    padding: 20px;
+    position: relative;
+}
+
+#signup.body span {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+#signup.body span.sign_up{
+    background-color: #4cace9;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    padding: 10px;
+    margin-right: 40px;
+    float: right;
+    margin-top: -10px;
+}
+
+#signup.body span.sign_up a, #signup.body span.sign_up a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+

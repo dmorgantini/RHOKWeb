@@ -1,30 +1,43 @@
-#main_container
-  include ../header
-  #main_content
-    #spotlite
-      h2 See charities to donate to on the hover of your mouse
-      h2 How it works
+include ../newHeader
+#main_content.body
+  #video
+    | This site is under construction.<br/>Space is reserved for a video!
+  #tryitout
+    div
+      h2 Try it out!
       p
-        | Charity Click detects charities registered with us whenever their name is mentioned
-        | on any website. If an article or video inspires you and you'd like to help the charity
-        | mentioned, simply mouse over the icon
+        | Just click the button below to install CharityClick to Chrome.
+      p
+        | The next time you see
         img(src="images/flying-heart-icon_16.png")
-        | &nbsp;and click "donate now" to be taken straight to the charity's secure donation page
-        | or click "view charity information" to find out more about them.
-    #main-block
-      h2 How to get started
-      p
-        | Just click the "install to chrome". And the next time you see (insert icon) just
-        | mouse over the icon and click straight to the charity donation page. It's that simple.
-      a(href="/plugin/charityclick0.0.7.crx")
-        img(src="images/AddChrome.png", alt="Install Chrome Extension Now")
-      p
-        | Please install Chrome Extension and See how it works..
-      a(href="http://www.guardian.co.uk/society/2011/dec/04/charities-welcome-cash-for-homes?INTCMP=SRCH", target="_blank") charities-welcome-cash-for-homes
-      br
-      a(href="http://www.ted.com/speakers/sunitha_krishnan.html", target="_blank") sunitha_krishnan Profile on Ted
-      h2 See example below
-      img(src="images/Example2.png")
-      div(style="clear:both")
-  include ../footer
-  include ../copyright
+        | &nbsp;just mouse over the icon and click straight to the charity donation page.
+      p It's that simple.
+
+    a(href="/plugin/charityclick0.0.7.crx")
+      img(src="images/AddChrome.png", alt="Install Chrome Extension Now")
+  div(style='clear:both')
+  #description
+    h2 How does it work?
+    p CharityClick is a free plugin for charities and those who want to make donations to good causes.
+    p It detects charities registered with us whenever their name is mentioned in any website.
+    p
+      | If the article or video inspires you and you'd like to help the charity mentioned, simply
+      | mouse over the
+      img(src="images/flying-heart-icon_16.png")
+      | &nbsp; icon and click "donate now" to be taken straight to the charity's secure donation page
+      | or click "view charity information" to find out more about them.
+  #charity-list
+    h2 Our Charity List
+    p Click on the links below to see CharityClick in action (You will have to install CharityClick first).
+
+    a(href="http://www.guardian.co.uk/society/2011/dec/15/winners-guardian-charity-awards") Guardian Charity Awards
+    a(href="http://www.ted.com/speakers/sunitha_krishnan.html") Sunitha Krishnan Profile on Ted
+div(style='clear:both;')
+#signup.body
+  span Are you a registered charity? Sign up here for free.
+  span.sign_up
+    a(href="/charity/register") Sign Up
+
+include ../footer
+
+
