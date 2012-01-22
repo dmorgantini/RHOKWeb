@@ -71,7 +71,7 @@ module.exports = function (charityModel, charitySessionModel) {
         donate:function (req, res) {
             charityModel.Charity.findById(req.params.id, function (err, doc) {
                 if (!err) {
-                    return res.redirect(doc.directDonationLink);
+                    return res.render('pages/donate', { charity: doc, donation: { value: 5 } } );
                 }
                 else {
                     console.log(err);
