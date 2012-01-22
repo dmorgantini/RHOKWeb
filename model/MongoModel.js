@@ -4,8 +4,7 @@
 
 var Mongoose = require('mongoose');
 
-//Mongoose.connect('mongodb://localhost/charityclick'); // TODO: Configuration me thinks
-Mongoose.connect('mongodb://dev:dev@staff.mongohq.com:10043/app2133887');
+Mongoose.connect('mongodb://localhost/charityclick'); // TODO: Configuration me thinks
 
 var Schema = Mongoose.Schema, ObjectId = Schema.ObjectId;
 
