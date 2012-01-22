@@ -27,9 +27,11 @@ app.configure("production", function () {
     return app.use(express.errorHandler());
 });
 
-var index = require('./routes/index.js');
+var index = require('./routes/index.js')();
 var charity = require('./routes/charity.js')();
 var charities = require('./routes/charities.js');
+
+app.all("*", index.session);
 
 app.get("/", index.index);
 app.get("/index", index.index);
