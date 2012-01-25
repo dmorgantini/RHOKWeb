@@ -167,4 +167,6 @@ div.body {
     text-decoration: none;
 }
 
-
+table tr.odd {
+    background-color: #F8F8F8;
+}
