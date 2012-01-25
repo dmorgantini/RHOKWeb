@@ -3,8 +3,9 @@
  */
 var mongoModel = require('./MongoModel.js');
 
-var CharitySessionSchema = mongoModel.CharitySessionSchema;
+var SessionSchema = mongoModel.SessionSchema;
 var Mongoose = mongoModel.Mongoose;
 
 
-exports.CharitySession = Mongoose.model('CharitySession', CharitySessionSchema);
+exports.Session = Mongoose.model('Session', SessionSchema);
+

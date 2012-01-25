@@ -37,17 +37,20 @@ app.get("/", index.index);
 app.get("/index", index.index);
 app.get("/aboutus", index.aboutus);
 app.get("/contact", index.contact);
+app.get(/^\/login(\/error)?$/, index.loginView);
+app.post("/login", index.login);
 
 app.get("/charity/register", charity.register);
-app.get(/^\/charity\/login(\/error)?$/, charity.loginView);
 app.get("/charity/:id", charity.view);
 app.get("/charity/:id/donate", charity.donate);
 app.get("/charity/:id/information", charity.information);
 app.get("/charity/:id/update", charity.updateView);
 app.post("/charity/:id/update", charity.update);
 app.post("/charity/register", charity.newCharity);
-app.post("/charity/login", charity.login);
 
+app.get("/admin/charities", charities.manageView);
+app.get("/admin/charity_list.json", charities.manageList);
+app.post("/admin/charity/update", charities.update);
 
 app.get("/charities.json", charities.jsonList);
 

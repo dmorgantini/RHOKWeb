@@ -1,50 +1,16 @@
-module.exports = function (charityModel, charitySessionModel) {
-    var charityModel = charityModel || require('../model/Charity.js');
-    var charitySessionModel = charitySessionModel || require('../model/CharitySession.js');
+module.exports = function (charityModel) {
+    charityModel = charityModel || require('../model/Charity.js');
 
     return {
         register:function (req, res) {
             return res.render('pages/registerCharity', { error:'false' });
         },
 
-        loginView:function (req, res) {
-            var error = { error:'false'};
-
-            if (req.params[0]) {
-                error.error = 'true';
-            }
-
-            if (req.currentSession && req.currentSession.charity) {
-                return res.redirect('/charity/' + req.currentSession.charity + '/update');
-            }
-            else {
-                return res.render('pages/loginCharity', error);
-            }
-        },
-
-        login:function (req, res) {
-            charityModel.Charity.find({ 'email':req.body.username, 'password':req.body.password }, function (err, doc) {
-
-                if (err) {
-                    console.log(err);
-                    return res.redirect('/error');
-                }
-
-                if (doc.length == 0) {
-                    return res.redirect('/charity/login/error');
-                }
-
-                var session = new charitySessionModel.CharitySession({ 'charity':doc[0]._id });
-                session.save(function (err, obj) {
-                    res.cookie('session', obj._id);
-                    return res.redirect('/charity/' + doc[0]._id + '/update');
-                });
-
-
-            });
-        },
-
         newCharity:function (req, res) {
+            if (!req.currentSession){
+                return res.redirect('charity/login');
+            }
+
             var charity = new charityModel.Charity(req.body.charity);
             charity.save(function (err) {
                 console.log(err);  // TODO: handle error better
@@ -93,9 +59,11 @@ module.exports = function (charityModel, charitySessionModel) {
         },
 
         update:function (req, res) {
-            if (!req.currentSession || req.currentSession.charity !== req.params.id){
+            if (!req.currentSession){
                 return res.redirect('charity/login');
             }
+
+            // TODO: handle no access to charity
 
             charityModel.Charity.findById(req.params.id, function (err, doc) {
                 if (!err) {
@@ -103,10 +71,7 @@ module.exports = function (charityModel, charitySessionModel) {
                     doc.website = req.body.charity.website;
                     doc.directDonationLink = req.body.charity.directDonationLink;
                     doc.donationInstructions = req.body.charity.donationInstructions;
-                    doc.email = req.body.charity.email;
-                    if (!req.body.charity.password) {
-                        doc.confirmPassword = doc.password;
-                    }
+                    doc.userId = req.currentSession.userId;
 
                     doc.save(function (error) {
                         if (!error)
@@ -126,7 +91,7 @@ module.exports = function (charityModel, charitySessionModel) {
         },
 
         updateView:function (req, res) {
-            if (!req.currentSession || req.currentSession.charity !== req.params.id){
+            if (!req.currentSession){
                 return res.redirect('charity/login');
             }
 

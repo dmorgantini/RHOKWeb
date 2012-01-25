@@ -14,17 +14,24 @@ var CharitySchema = new Schema({
     website:String,
     directDonationLink:String,
     donationInstructions:String,
+    charityState:{ type:String, "default":"pending"},
+    userId:String
+}, { strict:true });
+
+var SessionSchema = new Schema({
+    id:ObjectId,
+    userId:String
+}, { strict:true });
+
+var UserSchema = new Schema({
+    id:ObjectId,
+    firstName: String,
     email:String,
     password:String,
-    confirmPassword:String,
-    charityState:{ type:String, "default":"pending"}
-}, { strict: true } );
-
-var CharitySessionSchema = new Schema({
-    id:ObjectId,
-    charity: String
-}, { strict: true });
+    confirmPassword:String
+});
 
 exports.CharitySchema = CharitySchema;
-exports.CharitySessionSchema = CharitySessionSchema;
+exports.SessionSchema = SessionSchema;
+exports.UserSchema = UserSchema;
 exports.Mongoose = Mongoose;

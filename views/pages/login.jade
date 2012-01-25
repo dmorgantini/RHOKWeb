@@ -1,12 +1,12 @@
 #main_container
   include ../newHeader
   #main_content.body
-    h2 Charity Login
+    h2 Login
 
     - if (error == 'true')
       span Email address or password is invalid please try again
 
-    form(action="/charity/login", method="post")
+    form(action="/login", method="post")
       .editor-label
         label(for="username") Email
       .editor-field

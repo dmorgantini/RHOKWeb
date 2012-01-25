@@ -1,0 +1,46 @@
+#main_container
+  include ../newHeader
+  #main_content.body
+    h2 Manage
+
+    table#charities(style='width:100%')
+      thead
+        tr
+          th Name
+          th Donation Instructions
+          th Website
+          th Status
+  script
+    var oTable = $('#charities').dataTable({
+      "bProcessing": true,
+      "sAjaxSource": '/admin/charity_list.json',
+      "bPaginate": false,
+      "aoColumns": [
+        { "mDataProp": "name" },
+        { "mDataProp": "donationInstructions" },
+        { "mDataProp": "website" },
+        { "mDataProp": "charityState" },
+      ],
+      bAutoWidth: true,
+      "fnRowCallback": function( nRow, aData ) {
+        $(nRow).children(':nth(0)').attr("class", "name");
+        $(nRow).children(':nth(1)').attr("class", "donationInstructions");
+        $(nRow).children(':nth(2)').attr("class", "website");
+        $(nRow).children(':nth(3)').attr("class", "charityState");
+
+        return nRow;
+      },
+      "fnDrawCallback": function () {
+        $('#charities tbody td').editable( '/admin/charity/update', {
+          submitdata  : function () {
+            return { id : $(this).parent().attr('id'), cssClass: $(this).attr("class") }
+          },
+          "callback": function( sValue, y ) {
+          /* Redraw the table from the new data on the server */
+            oTable.fnDraw();
+            return true;
+          },
+          "height": "14px"
+        });
+      }
+    });
