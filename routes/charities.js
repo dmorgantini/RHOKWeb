@@ -50,7 +50,7 @@ exports.manageList = function(req, res){
                 obj.aaData.push({
                     "DT_RowId":elem._id,
                     "name": elem.name,
-                    "donationInstructions": elem.donationInstructions,
+                    "donationInstructions": elem.donationInstructions || "",
                     "website": elem.website,
                     "charityState": elem.charityState
                 });
